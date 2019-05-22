@@ -1,12 +1,8 @@
 # Data preprocessing for Credit-Card-Fraud-Detection problem
-import sys
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import train_test_split
-
-data_dir = sys.argv[1]
-undersample_amount = int(sys.argv[2])
 
 def skew_amount(data):
     normal_data = data[data.Class == 0]
@@ -44,10 +40,8 @@ def stratify_split(data, anomaly_count):
 
     return (undersample, test_data)
 
-def create_datasets():
-    data = pd.read_csv(data_dir)
+def create_datasets(dir, count):
+    data = pd.read_csv(dir)
     skew_amount(data)
     data = normalize_amount(data)
-    return stratify_split(data, undersample_amount)
-
-create_datasets()
+    return stratify_split(data, count)
