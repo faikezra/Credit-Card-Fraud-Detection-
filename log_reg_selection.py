@@ -7,7 +7,6 @@ from collections import Counter
 import random
 
 def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
-    random.seed(42)
     c_bank = [0.001, 0.01, 0.1, 1, 10]
     penalties = ['l1', 'l2']
     results_matrix_train = np.zeros((5,3))

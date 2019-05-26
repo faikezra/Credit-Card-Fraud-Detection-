@@ -13,7 +13,9 @@ def skew_amount(data):
 def normalize_amount(data):
     normalizer = StandardScaler()
     data['Normalized_Amount'] = normalizer.fit_transform(np.array(data['Amount']).reshape(-1, 1))
+    data['Normalized_Time'] = normalizer.fit_transform(np.array(data['Time']).reshape(-1, 1))
     data = data.drop('Amount', axis = 1)
+    data = data.drop('Time', axis = 1)
     return (data)
 
 def stratify_split(data, anomaly_count):
