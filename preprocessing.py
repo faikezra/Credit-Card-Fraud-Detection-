@@ -31,8 +31,7 @@ def stratify_split(data, normal_count, anomaly_count):
     y_undersample = y.iloc[all_index]
     X_train_undersample, X_test_undersample, y_train_undersample, y_test_undersample = train_test_split(X_undersample
                                                                                                    ,y_undersample
-                                                                                                   ,test_size = 0.1
-                                                                                                   ,random_state = 0)
+                                                                                                   ,test_size = 0.1)
     X_test = X[~X.index.isin(all_index)]
     y_test = y[~y.index.isin(all_index)]
     undersample = (X_train_undersample, X_test_undersample, y_train_undersample, y_test_undersample)
