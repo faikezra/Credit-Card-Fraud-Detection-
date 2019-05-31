@@ -2,7 +2,6 @@
 import preprocessing
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 from sklearn.metrics import recall_score
