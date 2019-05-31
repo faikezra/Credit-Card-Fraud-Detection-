@@ -36,7 +36,7 @@ def plot_PCA (train_x, train_y, pca, plot):
     return finalDf
 
 def PCA_(undersample_amount, data_dir, plot):
-    train_x, test_x, train_y, test_y = preprocessing.create_datasets(data_dir, undersample_amount)[0]
+    train_x, test_x, train_y, test_y = preprocessing.create_datasets(data_dir, undersample_amount, undersample_amount)[0]
     pca = PCA(n_components=2)
     finalDf = plot_PCA(train_x, train_y, pca, plot)
     pca = PCA(n_components= 10)

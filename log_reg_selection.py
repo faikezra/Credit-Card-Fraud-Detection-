@@ -14,7 +14,7 @@ def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
     results_matrix_large_test = np.zeros((5,3))
 
     for sample_count in range(sample_times):
-        undersample , test_set = preprocessing.create_datasets(data_dir, undersample_amount)
+        undersample , test_set = preprocessing.create_datasets(data_dir, undersample_amount, undersample_amount)
         X_train_undersample, X_test_undersample, y_train_undersample, y_test_undersample = undersample
         X_test, y_test = test_set
         for c in c_bank:
@@ -98,7 +98,11 @@ def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
     print(pd.DataFrame(confusion_matrix(y_test.values,y_pred_undersample,labels=[0,1]), index=['true:0', 'true:1'], columns=['pred:0', 'pred:1']))
     return (final_c[0], final_reg[0])
 
-sample_times = 10
-undersample_amount = 200
-data_dir = '/Users/ezra/Documents/data_repo/creditcard.csv'
-Logistic_Regression_Selection(sample_times,undersample_amount,data_dir)
+def main():
+    sample_times = 10
+    undersample_amount = 200
+    data_dir = '/Users/ezra/Documents/data_repo/creditcard.csv'
+    Logistic_Regression_Selection(sample_times,undersample_amount,data_dir)
+
+if __name__ == "__main__":
+    main()

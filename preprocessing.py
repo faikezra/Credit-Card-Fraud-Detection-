@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.cross_validation import train_test_split
 
 def skew_amount(data):
@@ -18,12 +19,12 @@ def normalize_amount(data):
     data = data.drop('Time', axis = 1)
     return (data)
 
-def stratify_split(data, anomaly_count):
+def stratify_split(data, normal_count, anomaly_count):
     X = data.iloc[:, data.columns != 'Class']
     y = data.iloc[:, data.columns == 'Class']
     normal_data = data[data.Class == 0]
     anomaly_data = data[data.Class != 0]
-    normal_index = normal_data.sample(anomaly_count).index
+    normal_index = normal_data.sample(normal_count).index
     anomaly_index = anomaly_data.sample(anomaly_count).index
     all_index = np.concatenate([normal_index,anomaly_index])
     X_undersample = X.iloc[all_index]
@@ -42,8 +43,8 @@ def stratify_split(data, anomaly_count):
 
     return (undersample, test_data)
 
-def create_datasets(dir, count):
+def create_datasets(dir, normal_count, anomaly_count):
     data = pd.read_csv(dir)
     skew_amount(data)
     data = normalize_amount(data)
-    return stratify_split(data, count)
+    return stratify_split(data,normal_count, anomaly_count)

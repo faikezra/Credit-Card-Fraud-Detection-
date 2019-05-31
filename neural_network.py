@@ -4,9 +4,8 @@ import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 
-def Neural_Network_Selection(sample_times, undersample_amount, data_dir):
-    random.seed(42)
-    undersample , _ = preprocessing.create_datasets(data_dir, undersample_amount)
+def Neural_Network_Selection(normal_count, anomaly_coount, data_dir):
+    undersample , _ = preprocessing.create_datasets(data_dir, normal_count, anomaly_coount)
     X_train_undersample, X_test_undersample, y_train_undersample, y_test_undersample = undersample
     hidden_layers = [1,2,3,4,5]
     hidden_layer_neurons = [50,100,200,300,500]
@@ -43,7 +42,7 @@ def Neural_Network_Selection(sample_times, undersample_amount, data_dir):
 def main():
     undersample_amount = 200
     data_dir = '/Users/ezra/Documents/data_repo/creditcard.csv'
-    Neural_Network_Selection(1,undersample_amount,data_dir)
+    Neural_Network_Selection(undersample_amount, undersample_amount, data_dir)
 
 if __name__ == "__main__":
     main()
