@@ -33,13 +33,17 @@ def Neural_Network_Selection(sample_times, undersample_amount, data_dir):
             print('accuracy for a neural network with {} hidden layers, and {} dense connections is: {}'.format(layers, neurons, acc))
 
     result = np.where(results_matrix_validation == np.amax(results_matrix_validation))
-    print(result)
     print("------------------------------------")
     print("Best Validation Neural Network Acc: {}".format(np.amax(results_matrix_validation)))
     print("With Dense Connection Number: {}".format(hidden_layer_neurons[result[0][0]]))
     print("With Hidden Layer Depth: {}".format(hidden_layers[result[1][0]]))
     print("------------------------------------")
+    return (hidden_layer_neurons[result[0][0]], hidden_layers[result[1][0]])
 
-undersample_amount = 200
-data_dir = '/Users/ezra/Documents/data_repo/creditcard.csv'
-Neural_Network_Selection(1,undersample_amount,data_dir)
+def main():
+    undersample_amount = 200
+    data_dir = '/Users/ezra/Documents/data_repo/creditcard.csv'
+    Neural_Network_Selection(1,undersample_amount,data_dir)
+
+if __name__ == "__main__":
+    main()

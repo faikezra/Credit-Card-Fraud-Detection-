@@ -78,7 +78,7 @@ def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
     print("Best Overall C value: {}, Best Overall Regularizer: {}".format(final_c[0], final_reg[0]))
     print("------------------------------------")
 
-    log_reg = LogisticRegression(C = int(final_c[0]), penalty= str(final_reg[0]))
+    log_reg = LogisticRegression(C = float(final_c[0]), penalty= str(final_reg[0]))
     log_reg.fit(X_train_undersample, y_train_undersample.values.ravel())
     # train set
     y_pred_undersample = log_reg.predict(X_train_undersample)
@@ -96,7 +96,7 @@ def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
     print('Logistic Regression Test Set Recall: {}'.format(recall_large_test))
     print('Logistic Regression Test Set Confusion Matrix:')
     print(pd.DataFrame(confusion_matrix(y_test.values,y_pred_undersample,labels=[0,1]), index=['true:0', 'true:1'], columns=['pred:0', 'pred:1']))
-
+    return (final_c[0], final_reg[0])
 
 sample_times = 10
 undersample_amount = 200

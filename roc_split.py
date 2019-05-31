@@ -101,6 +101,7 @@ def main():
     pca = PCA(n_components=2)
     plot_PCA(test_x, test_y, pca, True)
     _ = ROC(df, 0, True)
+    return threshold
 
 if __name__ == "__main__":
     main()
