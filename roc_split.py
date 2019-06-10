@@ -42,7 +42,7 @@ def PCA_(undersample_amount, data_dir, plot):
     pca = PCA(n_components= 10)
     principalComponents = pca.fit_transform(train_x)
     variance_explained = pca.explained_variance_ratio_
-    print('First 10 Principal Components Variance Explained As Follows Respectively: {}'.format(variance_explained))
+    #print('First 10 Principal Components Variance Explained As Follows Respectively: {}'.format(variance_explained))
 
     # first two principal components consistantly (every stratified split sample) explains about 75% and above of the variance
     # while the first component explains about 65% of the whole thing
@@ -65,7 +65,7 @@ def ROC(df,threshold_value, plot):
         plt.legend(loc="lower right")
         plt.show()
     # take split point that catches about 95% 0f the Frauds and makes false calls 30% of the time
-    print('True Positive Rate (Sensitivity) for train set: {} || False Positive Rate for train set: {}'.format(tpr[-17], fpr[-17]))
+    #print('True Positive Rate (Sensitivity) for train set: {} || False Positive Rate for train set: {}'.format(tpr[-17], fpr[-17]))
     return (thresholds[threshold_value])
 
 def test_roc_split(split_point, test_x, test_y, plot):
@@ -74,10 +74,10 @@ def test_roc_split(split_point, test_x, test_y, plot):
     pca = PCA(n_components= 10)
     principalComponents = pca.fit_transform(test_x)
     variance_explained = pca.explained_variance_ratio_
-    print('Test Set: First 10 Principal Components Variance Explained As Follows Respectively: {}'.format(variance_explained))
+    #print('Test Set: First 10 Principal Components Variance Explained As Follows Respectively: {}'.format(variance_explained))
     predicted = [1.0 if i > split_point else 0.0 for i in list(finalDf['principal component 1'])]
     accuracy = accuracy_score(finalDf['Class'], predicted)
-    print('Test Set Performance: {}'.format(accuracy))
+    #print('Test Set Performance: {}'.format(accuracy))
     return accuracy
 
 def main():
@@ -97,7 +97,7 @@ def main():
         acc.append(mean(keep_acc))
         split.append(mean(keep_split))
     threshold = split[acc.index(max(acc))]
-    print("Optimal split point is: {}".format(threshold))
+    #print("Optimal split point is: {}".format(threshold))
     pca = PCA(n_components=2)
     plot_PCA(test_x, test_y, pca, True)
     _ = ROC(df, 0, True)

@@ -27,13 +27,14 @@ def create_nonlinear_SVC(data_dir, normal_count, anomaly_count):
                 if recall_val < recall_state:
                     recall_val = recall_state
                     opt_kernel, opt_degree, opt_C = (kernel, deg, c)
-                print('Recall Score: {} | kernel {}, degree {}, C {}'.format(recall_state, kernel, deg, c))
+                #print('Recall Score: {} | kernel {}, degree {}, C {}'.format(recall_state, kernel, deg, c))
     return((kernel, deg, c))
 
 def main():
     (kernel, deg, c) = create_nonlinear_SVC('/Users/ezra/Documents/data_repo/creditcard.csv', 200,200)
-    print('------------------------------------------------------------------')
-    print('Optimal SVC -> Kernel {} | degree {} | C {}'.format(kernel, deg, c))
+    #print('------------------------------------------------------------------')
+    #print('Optimal SVC -> Kernel {} | degree {} | C {}'.format(kernel, deg, c))
+    return (kernel, deg, c)
 
 if __name__ == "__main__":
     main()

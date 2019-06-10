@@ -8,8 +8,8 @@ from sklearn.cross_validation import train_test_split
 def skew_amount(data):
     normal_data = data[data.Class == 0]
     anomaly_data = data[data.Class != 0]
-    print('Data points that are normal: {}'.format(len(data[data.Class == 0])))
-    print('Data points that are abnormal: {}'.format(len(data[data.Class != 0])))
+    #print('Data points that are normal: {}'.format(len(data[data.Class == 0])))
+    #print('Data points that are abnormal: {}'.format(len(data[data.Class != 0])))
 
 def normalize_amount(data):
     normalizer = StandardScaler()
@@ -36,9 +36,9 @@ def stratify_split(data, normal_count, anomaly_count):
     y_test = y[~y.index.isin(all_index)]
     undersample = (X_train_undersample, X_test_undersample, y_train_undersample, y_test_undersample)
     test_data = (X_test, y_test)
-    print('Undersampled Train Dataset Count: {}'.format(len(y_train_undersample)))
-    print('Undersampled Test Dataset Count: {}'.format(len(y_test_undersample)))
-    print('Full Test Dataset Count: {}'.format(len(y_test)))
+    #print('Undersampled Train Dataset Count: {}'.format(len(y_train_undersample)))
+    #print('Undersampled Test Dataset Count: {}'.format(len(y_test_undersample)))
+    #print('Full Test Dataset Count: {}'.format(len(y_test)))
 
     return (undersample, test_data)
 
