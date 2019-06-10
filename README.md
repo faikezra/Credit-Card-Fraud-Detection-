@@ -3,13 +3,15 @@
 Approach to detect anomalies within a large dataset of credit card transactions.
 As in most cases with anomaly detection, the positive cases are highly skewed against. This repo aims to employ several classification techniques with the addition of undersampling from the pool of the dataset.
 
-Considered Models:
+### Study Reason:
+
+The traditional tools of anomaly detection (for this case the isolation forest) will be bench marked against undersample trained traditional classifiers. 
+
+### Considered Models:
 
 - Logistic Regression
 - Multilayer Perceptron
-- Dimension Reduction and ROC Parameter Split
 - Support Vector Classifiers
-- Isolation Forest
 
 All models' hyperparameters were picked via Recall Performence of their respective random test set.
 
@@ -29,8 +31,7 @@ In order to handicap the selection process, hyperparameters for the models were 
 The evaluation is done by running the trained models on the remaining 284115 negative and 292. 
 Metrics for evaluation:
 
-- Area Under Precision Recall Curve
-- Recall
-- False Positive Rate
+- Recall will be the main metric 
+- Precision will be a secondary metric
 
 ### Findings
