@@ -1,10 +1,8 @@
 import preprocessing
 import numpy as np
-import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix,precision_recall_curve,auc,roc_auc_score,roc_curve,recall_score,classification_report
 from collections import Counter
-import random
 
 def Logistic_Regression_Selection(sample_times, undersample_amount, data_dir):
     c_bank = [0.001, 0.01, 0.1, 1, 10]

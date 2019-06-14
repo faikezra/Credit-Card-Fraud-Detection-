@@ -1,11 +1,7 @@
 # Data preprocessing for Credit-Card-Fraud-Detection problem
 import preprocessing
-import numpy as np
-import pandas as pd
 from sklearn.svm import SVC
-from sklearn.svm import LinearSVC
 from sklearn.metrics import recall_score
-from sklearn.cross_validation import train_test_split
 
 def create_nonlinear_SVC(data_dir, normal_count, anomaly_count):
     undersample, _ = preprocessing.create_datasets(data_dir, normal_count, anomaly_count)

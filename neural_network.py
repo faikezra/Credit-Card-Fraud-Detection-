@@ -24,19 +24,12 @@ def Neural_Network_Selection(normal_count, anomaly_coount, data_dir):
             model.add(Dense(1, activation='sigmoid'))
             # Compile model
             model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-            avg_acc = 0
             # Fit the model
             model.fit(X_train_undersample, y_train_undersample, epochs=200, batch_size=10,verbose=0)
             acc = (model.evaluate(X_test_undersample,y_test_undersample)[1])
             results_matrix_validation[dense_index][layer_index] = acc
-            #print('accuracy for a neural network with {} hidden layers, and {} dense connections is: {}'.format(layers, neurons, acc))
 
     result = np.where(results_matrix_validation == np.amax(results_matrix_validation))
-    #print("------------------------------------")
-    #print("Best Validation Neural Network Acc: {}".format(np.amax(results_matrix_validation)))
-    #print("With Dense Connection Number: {}".format(hidden_layer_neurons[result[0][0]]))
-    #print("With Hidden Layer Depth: {}".format(hidden_layers[result[1][0]]))
-    #print("------------------------------------")
     return (hidden_layer_neurons[result[0][0]], hidden_layers[result[1][0]])
 
 def main():

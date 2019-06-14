@@ -1,19 +1,14 @@
 import preprocessing
-import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix,precision_recall_curve,auc,roc_auc_score,roc_curve,recall_score,classification_report
+from sklearn.metrics import confusion_matrix, precision_score, recall_score
 from sklearn.preprocessing import MinMaxScaler
-from collections import Counter
 from sklearn.svm import SVC
-from sklearn.svm import LinearSVC
-from sklearn.metrics import recall_score
 from sklearn.decomposition import PCA
 from sklearn.ensemble import IsolationForest
-from sklearn.metrics import precision_score
 import matplotlib.pyplot as plt
 
 
@@ -23,7 +18,7 @@ import log_reg_selection
 import svm
 
 
-def cm (y_true, y_pred,classes, normalize, title):
+def cm(y_true, y_pred,classes, normalize, title):
 
     confusion = confusion_matrix(y_true, y_pred)
     if normalize:
@@ -123,7 +118,8 @@ print('Isolation Forest Precision Value: {}'.format(precision_score(y_true,ISO_p
 # CM
 np.set_printoptions(precision=2)
 predictions = [ROC_predicted,SVM_predicted,MLP_predicted,LOG_predicted,ISO_predicted]
-model_names = ['PCA_ROC Split', 'Support Vector Machine', 'Multi-Layer Perceptron', 'Logistic Regression', 'Isolation Forest']
+model_names = ['PCA_ROC Split', 'Support Vector Machine', 'Multi-Layer Perceptron', 'Logistic Regression',
+               'Isolation Forest']
 for prediction, model_name in zip(predictions,model_names):
     cm(y_true, prediction, classes=[0,1], normalize=True, title='{} Confusion Matrix'.format(model_name))
     plt.show()

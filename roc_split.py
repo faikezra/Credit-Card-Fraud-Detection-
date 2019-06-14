@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from statistics import mean
 from sklearn import metrics
 import pandas as pd
-import numpy as np
 
 def plot_PCA (train_x, train_y, pca, plot):
     principalComponents = pca.fit_transform(train_x)
