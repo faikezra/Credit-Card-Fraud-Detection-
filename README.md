@@ -38,6 +38,6 @@ Metrics for evaluation:
 
 Confusion Matrix for the top two performing undersampling models (Linear SVM and Logistic Regression) and the benchmark Isolation Forest model can be found below.
 
-<img src="LOG.png" width="720" height="500">
-<img src="SVM.png" width="720" height="500">
-<img src="isolation_forest.png" width="720" height="500">
+<img src="LOG.png" width="500" height="300">
+<img src="SVM.png" width="500" height="300">
+<img src="isolation_forest.png" width="500" height="300">
